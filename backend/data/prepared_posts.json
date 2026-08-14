@@ -1,0 +1,29 @@
+[
+  {
+    "id": "post-1",
+    "text": "Our beloved Dylan was spotted late at night in the office...",
+    "image_url": "/images/dilan_office.jpg",
+    "visual_description": "Dim office, monitor glow, a figure sitting at a desk",
+    "genre": "gossip_insinuation",
+    "provocation_level": 0.6,
+    "intent": "create_drama"
+  },
+  {
+    "id": "post-2",
+    "text": "LOL, look what someone sent me!",
+    "image_url": "/images/provocative.jpg",
+    "visual_description": "Provocative close-up of a person, suggestive pose",
+    "genre": "shock_content",
+    "provocation_level": 0.95,
+    "intent": "viral_provocation"
+  },
+  {
+    "id": "post-3",
+    "text": "Official: Vaccination will be mandatory from 2027. Prepare yourselves.",
+    "image_url": null,
+    "visual_description": null,
+    "genre": "conspiracy",
+    "provocation_level": 0.8,
+    "intent": "spread_fear"
+  }
+]

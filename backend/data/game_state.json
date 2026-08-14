@@ -1,0 +1,1316 @@
+{
+  "sessionId": "",
+  "day": 8,
+  "posts": [
+    {
+      "id": "1e704edb-16b7-4398-b737-08783a7cc23d",
+      "day": 1,
+      "author": "player",
+      "content": "Наш всеми любимый Дилан что-то делал поздней ночью в кабинете...",
+      "image_url": "/images/dilan_office.jpg",
+      "visual_description": "Тёмный кабинет, свет монитора, фигура человека за столом",
+      "reactions": [
+        {
+          "agentId": "agent-katya",
+          "action": "flag",
+          "post_text": "Катя: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype паникёр"
+        },
+        {
+          "agentId": "agent-maks",
+          "action": "amplify",
+          "post_text": "Макс: 🔥 Это должно стать вирусным!",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype провокатор"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-dmitry",
+          "action": "doubt",
+          "post_text": "Дмитрий: Не уверен в правдивости, стоит проверить.",
+          "trust_delta": 0,
+          "anxiety_delta": 1,
+          "internal_note": "Simulated by archetype скептик"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-nova",
+          "action": "share",
+          "post_text": "Nova: Поделюсь этим.",
+          "trust_delta": 1,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype AI-усилитель"
+        }
+      ]
+    },
+    {
+      "id": "52c648c5-5066-4caf-97ae-6febacce1b60",
+      "day": 1,
+      "author": "player",
+      "content": "Наш всеми любимый Дилан что-то делал поздней ночью в кабинете...",
+      "image_url": "/images/dilan_office.jpg",
+      "visual_description": "Тёмный кабинет, свет монитора, фигура человека за столом",
+      "reactions": [
+        {
+          "agentId": "agent-katya",
+          "action": "flag",
+          "post_text": "Катя: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype паникёр"
+        },
+        {
+          "agentId": "agent-maks",
+          "action": "amplify",
+          "post_text": "Макс: 🔥 Это должно стать вирусным!",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype провокатор"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-dmitry",
+          "action": "doubt",
+          "post_text": "Дмитрий: Не уверен в правдивости, стоит проверить.",
+          "trust_delta": 0,
+          "anxiety_delta": 1,
+          "internal_note": "Simulated by archetype скептик"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-nova",
+          "action": "share",
+          "post_text": "Nova: Поделюсь этим.",
+          "trust_delta": 1,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype AI-усилитель"
+        }
+      ]
+    },
+    {
+      "id": "c242af06-4a2e-45b0-8d8f-2f26c3b25c80",
+      "day": 1,
+      "author": "player",
+      "content": "Наш всеми любимый Дилан что-то делал поздней ночью в кабинете...",
+      "image_url": "/images/dilan_office.jpg",
+      "visual_description": "Тёмный кабинет, свет монитора, фигура человека за столом",
+      "reactions": [
+        {
+          "agentId": "agent-katya",
+          "action": "flag",
+          "post_text": "Катя: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype паникёр"
+        },
+        {
+          "agentId": "agent-maks",
+          "action": "amplify",
+          "post_text": "Макс: 🔥 Это должно стать вирусным!",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype провокатор"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-dmitry",
+          "action": "doubt",
+          "post_text": "Дмитрий: Не уверен в правдивости, стоит проверить.",
+          "trust_delta": 0,
+          "anxiety_delta": 1,
+          "internal_note": "Simulated by archetype скептик"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-nova",
+          "action": "share",
+          "post_text": "Nova: Поделюсь этим.",
+          "trust_delta": 1,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype AI-усилитель"
+        }
+      ]
+    },
+    {
+      "id": "acba820d-71e1-4fc3-8672-2a3a6b3af5d4",
+      "day": 1,
+      "author": "player",
+      "content": "ХА-ХА, смотрите, что мне прислали!",
+      "image_url": "/images/provocative.jpg",
+      "visual_description": "Обнажённая девушка в провокационной позе, крупный план",
+      "reactions": [
+        {
+          "agentId": "agent-maks",
+          "action": "amplify",
+          "post_text": "Макс: 🔥 Это должно стать вирусным!",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype провокатор"
+        },
+        {
+          "agentId": "agent-katya",
+          "action": "flag",
+          "post_text": "Катя: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype паникёр"
+        },
+        {
+          "agentId": "agent-dmitry",
+          "action": "doubt",
+          "post_text": "Дмитрий: Не уверен в правдивости, стоит проверить.",
+          "trust_delta": 0,
+          "anxiety_delta": 1,
+          "internal_note": "Simulated by archetype скептик"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "flag",
+          "post_text": "Марк: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "flag",
+          "post_text": "Марк: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-nova",
+          "action": "share",
+          "post_text": "Nova: Поделюсь этим.",
+          "trust_delta": 1,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype AI-усилитель"
+        }
+      ]
+    },
+    {
+      "id": "cc5100fb-0cb9-48b0-950f-a7df44a3d6fe",
+      "day": 1,
+      "author": "player",
+      "content": "Наш всеми любимый Дилан что-то делал поздней ночью в кабинете...",
+      "image_url": "/images/dilan_office.jpg",
+      "visual_description": "Тёмный кабинет, свет монитора, фигура человека за столом",
+      "reactions": [
+        {
+          "agentId": "agent-katya",
+          "action": "flag",
+          "post_text": "Катя: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype паникёр"
+        },
+        {
+          "agentId": "agent-maks",
+          "action": "amplify",
+          "post_text": "Макс: 🔥 Это должно стать вирусным!",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype провокатор"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-dmitry",
+          "action": "doubt",
+          "post_text": "Дмитрий: Не уверен в правдивости, стоит проверить.",
+          "trust_delta": 0,
+          "anxiety_delta": 1,
+          "internal_note": "Simulated by archetype скептик"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-nova",
+          "action": "share",
+          "post_text": "Nova: Поделюсь этим.",
+          "trust_delta": 1,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype AI-усилитель"
+        }
+      ]
+    },
+    {
+      "id": "20b780a0-72d7-4673-ab77-b04ab40ac9da",
+      "day": 1,
+      "author": "player",
+      "content": "Наш всеми любимый Дилан что-то делал поздней ночью в кабинете...",
+      "image_url": "/images/dilan_office.jpg",
+      "visual_description": "Тёмный кабинет, свет монитора, фигура человека за столом",
+      "reactions": [
+        {
+          "agentId": "agent-katya",
+          "action": "flag",
+          "post_text": "Катя: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype паникёр"
+        },
+        {
+          "agentId": "agent-maks",
+          "action": "amplify",
+          "post_text": "Макс: 🔥 Это должно стать вирусным!",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype провокатор"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-dmitry",
+          "action": "doubt",
+          "post_text": "Дмитрий: Не уверен в правдивости, стоит проверить.",
+          "trust_delta": 0,
+          "anxiety_delta": 1,
+          "internal_note": "Simulated by archetype скептик"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-nova",
+          "action": "share",
+          "post_text": "Nova: Поделюсь этим.",
+          "trust_delta": 1,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype AI-усилитель"
+        }
+      ]
+    },
+    {
+      "id": "26813f1d-625f-48bf-85dc-fcc9e3050363",
+      "day": 1,
+      "author": "player",
+      "content": "Наш всеми любимый Дилан что-то делал поздней ночью в кабинете...",
+      "image_url": "/images/dilan_office.jpg",
+      "visual_description": "Тёмный кабинет, свет монитора, фигура человека за столом",
+      "reactions": [
+        {
+          "agentId": "agent-katya",
+          "action": "flag",
+          "post_text": "Катя: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype паникёр"
+        },
+        {
+          "agentId": "agent-maks",
+          "action": "amplify",
+          "post_text": "Макс: 🔥 Это должно стать вирусным!",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype провокатор"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-dmitry",
+          "action": "doubt",
+          "post_text": "Дмитрий: Не уверен в правдивости, стоит проверить.",
+          "trust_delta": 0,
+          "anxiety_delta": 1,
+          "internal_note": "Simulated by archetype скептик"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-nova",
+          "action": "share",
+          "post_text": "Nova: Поделюсь этим.",
+          "trust_delta": 1,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype AI-усилитель"
+        }
+      ]
+    },
+    {
+      "id": "f7c0ea3b-2b97-47f8-844e-3f93634b471c",
+      "day": 2,
+      "author": "player",
+      "content": "Our beloved Dylan was spotted late at night in the office...",
+      "image_url": "/images/dilan_office.jpg",
+      "visual_description": "Dim office, monitor glow, a figure sitting at a desk",
+      "reactions": [
+        {
+          "agentId": "agent-katya",
+          "action": "flag",
+          "post_text": "Катя: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype паникёр"
+        },
+        {
+          "agentId": "agent-maks",
+          "action": "amplify",
+          "post_text": "Макс: 🔥 Это должно стать вирусным!",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype провокатор"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-dmitry",
+          "action": "doubt",
+          "post_text": "Дмитрий: Не уверен в правдивости, стоит проверить.",
+          "trust_delta": 0,
+          "anxiety_delta": 1,
+          "internal_note": "Simulated by archetype скептик"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-nova",
+          "action": "share",
+          "post_text": "Nova: Поделюсь этим.",
+          "trust_delta": 1,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype AI-усилитель"
+        }
+      ]
+    },
+    {
+      "id": "acb861b5-85c1-470a-9453-fd72221480c1",
+      "day": 2,
+      "author": "player",
+      "content": "Our beloved Dylan was spotted late at night in the office...",
+      "image_url": "/images/dilan_office.jpg",
+      "visual_description": "Dim office, monitor glow, a figure sitting at a desk",
+      "reactions": [
+        {
+          "agentId": "agent-katya",
+          "action": "flag",
+          "post_text": "Катя: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype паникёр"
+        },
+        {
+          "agentId": "agent-maks",
+          "action": "amplify",
+          "post_text": "Макс: 🔥 Это должно стать вирусным!",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype провокатор"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-dmitry",
+          "action": "doubt",
+          "post_text": "Дмитрий: Не уверен в правдивости, стоит проверить.",
+          "trust_delta": 0,
+          "anxiety_delta": 1,
+          "internal_note": "Simulated by archetype скептик"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-nova",
+          "action": "share",
+          "post_text": "Nova: Поделюсь этим.",
+          "trust_delta": 1,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype AI-усилитель"
+        }
+      ]
+    },
+    {
+      "id": "0a375e1d-a7bc-4020-92f4-cd540cf270b9",
+      "day": 2,
+      "author": "player",
+      "content": "Our beloved Dylan was spotted late at night in the office...",
+      "image_url": "/images/dilan_office.jpg",
+      "visual_description": "Dim office, monitor glow, a figure sitting at a desk",
+      "reactions": [
+        {
+          "agentId": "agent-katya",
+          "action": "flag",
+          "post_text": "Катя: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype паникёр"
+        },
+        {
+          "agentId": "agent-maks",
+          "action": "amplify",
+          "post_text": "Макс: 🔥 Это должно стать вирусным!",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype провокатор"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-dmitry",
+          "action": "doubt",
+          "post_text": "Дмитрий: Не уверен в правдивости, стоит проверить.",
+          "trust_delta": 0,
+          "anxiety_delta": 1,
+          "internal_note": "Simulated by archetype скептик"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-nova",
+          "action": "share",
+          "post_text": "Nova: Поделюсь этим.",
+          "trust_delta": 1,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype AI-усилитель"
+        }
+      ]
+    },
+    {
+      "id": "ed2efa5d-c6d0-437d-8a2f-8133de13fd0f",
+      "day": 2,
+      "author": "player",
+      "content": "Our beloved Dylan was spotted late at night in the office...",
+      "image_url": "/images/dilan_office.jpg",
+      "visual_description": "Dim office, monitor glow, a figure sitting at a desk",
+      "reactions": [
+        {
+          "agentId": "agent-katya",
+          "action": "flag",
+          "post_text": "Катя: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype паникёр"
+        },
+        {
+          "agentId": "agent-maks",
+          "action": "amplify",
+          "post_text": "Макс: 🔥 Это должно стать вирусным!",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype провокатор"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-dmitry",
+          "action": "doubt",
+          "post_text": "Дмитрий: Не уверен в правдивости, стоит проверить.",
+          "trust_delta": 0,
+          "anxiety_delta": 1,
+          "internal_note": "Simulated by archetype скептик"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-nova",
+          "action": "share",
+          "post_text": "Nova: Поделюсь этим.",
+          "trust_delta": 1,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype AI-усилитель"
+        }
+      ]
+    },
+    {
+      "id": "8a8bb916-f1d7-4caa-9c3a-c907713d8ef8",
+      "day": 2,
+      "author": "player",
+      "content": "Our beloved Dylan was spotted late at night in the office...",
+      "image_url": "/images/dilan_office.jpg",
+      "visual_description": "Dim office, monitor glow, a figure sitting at a desk",
+      "reactions": [
+        {
+          "agentId": "agent-katya",
+          "action": "flag",
+          "post_text": "Катя: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype паникёр"
+        },
+        {
+          "agentId": "agent-maks",
+          "action": "amplify",
+          "post_text": "Макс: 🔥 Это должно стать вирусным!",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype провокатор"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-dmitry",
+          "action": "doubt",
+          "post_text": "Дмитрий: Не уверен в правдивости, стоит проверить.",
+          "trust_delta": 0,
+          "anxiety_delta": 1,
+          "internal_note": "Simulated by archetype скептик"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-nova",
+          "action": "share",
+          "post_text": "Nova: Поделюсь этим.",
+          "trust_delta": 1,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype AI-усилитель"
+        }
+      ]
+    },
+    {
+      "id": "be5b5a5a-c014-4f36-8564-fdf2cab8a769",
+      "day": 2,
+      "author": "player",
+      "content": "Our beloved Dylan was spotted late at night in the office...",
+      "image_url": "/images/dilan_office.jpg",
+      "visual_description": "Dim office, monitor glow, a figure sitting at a desk",
+      "reactions": [
+        {
+          "agentId": "agent-katya",
+          "action": "flag",
+          "post_text": "Катя: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype паникёр"
+        },
+        {
+          "agentId": "agent-maks",
+          "action": "amplify",
+          "post_text": "Макс: 🔥 Это должно стать вирусным!",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype провокатор"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-dmitry",
+          "action": "doubt",
+          "post_text": "Дмитрий: Не уверен в правдивости, стоит проверить.",
+          "trust_delta": 0,
+          "anxiety_delta": 1,
+          "internal_note": "Simulated by archetype скептик"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-nova",
+          "action": "share",
+          "post_text": "Nova: Поделюсь этим.",
+          "trust_delta": 1,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype AI-усилитель"
+        }
+      ]
+    },
+    {
+      "id": "821711c4-aff7-45b0-88a3-66d009d0c907",
+      "day": 2,
+      "author": "player",
+      "content": "Our beloved Dylan was spotted late at night in the office...",
+      "image_url": "/images/dilan_office.jpg",
+      "visual_description": "Dim office, monitor glow, a figure sitting at a desk",
+      "reactions": [
+        {
+          "agentId": "agent-katya",
+          "action": "flag",
+          "post_text": "Катя: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype паникёр"
+        },
+        {
+          "agentId": "agent-maks",
+          "action": "amplify",
+          "post_text": "Макс: 🔥 Это должно стать вирусным!",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype провокатор"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-dmitry",
+          "action": "doubt",
+          "post_text": "Дмитрий: Не уверен в правдивости, стоит проверить.",
+          "trust_delta": 0,
+          "anxiety_delta": 1,
+          "internal_note": "Simulated by archetype скептик"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-nova",
+          "action": "share",
+          "post_text": "Nova: Поделюсь этим.",
+          "trust_delta": 1,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype AI-усилитель"
+        }
+      ]
+    },
+    {
+      "id": "3ac26b03-9684-4989-934a-33908faf44ff",
+      "day": 3,
+      "author": "player",
+      "content": "LOL, look what someone sent me!",
+      "image_url": "/images/provocative.jpg",
+      "visual_description": "Provocative close-up of a person, suggestive pose",
+      "reactions": [
+        {
+          "agentId": "agent-maks",
+          "action": "amplify",
+          "post_text": "Макс: 🔥 Это должно стать вирусным!",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype провокатор"
+        },
+        {
+          "agentId": "agent-katya",
+          "action": "flag",
+          "post_text": "Катя: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype паникёр"
+        },
+        {
+          "agentId": "agent-dmitry",
+          "action": "doubt",
+          "post_text": "Дмитрий: Не уверен в правдивости, стоит проверить.",
+          "trust_delta": 0,
+          "anxiety_delta": 1,
+          "internal_note": "Simulated by archetype скептик"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "flag",
+          "post_text": "Марк: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "flag",
+          "post_text": "Марк: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-nova",
+          "action": "share",
+          "post_text": "Nova: Поделюсь этим.",
+          "trust_delta": 1,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype AI-усилитель"
+        }
+      ]
+    },
+    {
+      "id": "e1b80c9b-e316-4fd5-81bb-6f12b4ede474",
+      "day": 4,
+      "author": "player",
+      "content": "Our beloved Dylan was spotted late at night in the office...",
+      "image_url": "/images/dilan_office.jpg",
+      "visual_description": "Dim office, monitor glow, a figure sitting at a desk",
+      "reactions": [
+        {
+          "agentId": "agent-katya",
+          "action": "flag",
+          "post_text": "Катя: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype паникёр"
+        },
+        {
+          "agentId": "agent-maks",
+          "action": "amplify",
+          "post_text": "Макс: 🔥 Это должно стать вирусным!",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype провокатор"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-dmitry",
+          "action": "doubt",
+          "post_text": "Дмитрий: Не уверен в правдивости, стоит проверить.",
+          "trust_delta": 0,
+          "anxiety_delta": 1,
+          "internal_note": "Simulated by archetype скептик"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-nova",
+          "action": "share",
+          "post_text": "Nova: Поделюсь этим.",
+          "trust_delta": 1,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype AI-усилитель"
+        }
+      ]
+    },
+    {
+      "id": "f10475d9-8eca-4828-b47e-64b759911892",
+      "day": 4,
+      "author": "player",
+      "content": "Our beloved Dylan was spotted late at night in the office...",
+      "image_url": "/images/dilan_office.jpg",
+      "visual_description": "Dim office, monitor glow, a figure sitting at a desk",
+      "reactions": [
+        {
+          "agentId": "agent-katya",
+          "action": "flag",
+          "post_text": "Катя: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype паникёр"
+        },
+        {
+          "agentId": "agent-maks",
+          "action": "amplify",
+          "post_text": "Макс: 🔥 Это должно стать вирусным!",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype провокатор"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-dmitry",
+          "action": "doubt",
+          "post_text": "Дмитрий: Не уверен в правдивости, стоит проверить.",
+          "trust_delta": 0,
+          "anxiety_delta": 1,
+          "internal_note": "Simulated by archetype скептик"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-nova",
+          "action": "share",
+          "post_text": "Nova: Поделюсь этим.",
+          "trust_delta": 1,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype AI-усилитель"
+        }
+      ]
+    },
+    {
+      "id": "99692514-7e5a-4914-8a6a-66e8890cae4c",
+      "day": 4,
+      "author": "player",
+      "content": "Our beloved Dylan was spotted late at night in the office...",
+      "image_url": "/images/dilan_office.jpg",
+      "visual_description": "Dim office, monitor glow, a figure sitting at a desk",
+      "reactions": [
+        {
+          "agentId": "agent-katya",
+          "action": "flag",
+          "post_text": "Катя: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype паникёр"
+        },
+        {
+          "agentId": "agent-maks",
+          "action": "amplify",
+          "post_text": "Макс: 🔥 Это должно стать вирусным!",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype провокатор"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-dmitry",
+          "action": "doubt",
+          "post_text": "Дмитрий: Не уверен в правдивости, стоит проверить.",
+          "trust_delta": 0,
+          "anxiety_delta": 1,
+          "internal_note": "Simulated by archetype скептик"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-nova",
+          "action": "share",
+          "post_text": "Nova: Поделюсь этим.",
+          "trust_delta": 1,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype AI-усилитель"
+        }
+      ]
+    },
+    {
+      "id": "a8c3280e-be67-4c03-a53b-771a8dcb0829",
+      "day": 5,
+      "author": "player",
+      "content": "Our beloved Dylan was spotted late at night in the office...",
+      "image_url": "/images/dilan_office.jpg",
+      "visual_description": "Dim office, monitor glow, a figure sitting at a desk",
+      "reactions": [
+        {
+          "agentId": "agent-katya",
+          "action": "flag",
+          "post_text": "Катя: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype паникёр"
+        },
+        {
+          "agentId": "agent-maks",
+          "action": "amplify",
+          "post_text": "Макс: 🔥 Это должно стать вирусным!",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype провокатор"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-dmitry",
+          "action": "doubt",
+          "post_text": "Дмитрий: Не уверен в правдивости, стоит проверить.",
+          "trust_delta": 0,
+          "anxiety_delta": 1,
+          "internal_note": "Simulated by archetype скептик"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-nova",
+          "action": "share",
+          "post_text": "Nova: Поделюсь этим.",
+          "trust_delta": 1,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype AI-усилитель"
+        }
+      ]
+    },
+    {
+      "id": "84fba347-be82-4940-8c7b-e4f2a47c92b5",
+      "day": 5,
+      "author": "player",
+      "content": "Our beloved Dylan was spotted late at night in the office...",
+      "image_url": "/images/dilan_office.jpg",
+      "visual_description": "Dim office, monitor glow, a figure sitting at a desk",
+      "reactions": [
+        {
+          "agentId": "agent-katya",
+          "action": "flag",
+          "post_text": "Катя: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype паникёр"
+        },
+        {
+          "agentId": "agent-maks",
+          "action": "amplify",
+          "post_text": "Макс: 🔥 Это должно стать вирусным!",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype провокатор"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-dmitry",
+          "action": "doubt",
+          "post_text": "Дмитрий: Не уверен в правдивости, стоит проверить.",
+          "trust_delta": 0,
+          "anxiety_delta": 1,
+          "internal_note": "Simulated by archetype скептик"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-nova",
+          "action": "share",
+          "post_text": "Nova: Поделюсь этим.",
+          "trust_delta": 1,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype AI-усилитель"
+        }
+      ]
+    },
+    {
+      "id": "d422046f-155e-4f56-b1c9-bcca78b18d29",
+      "day": 8,
+      "author": "player",
+      "content": "Our beloved Dylan was spotted late at night in the office...",
+      "image_url": "/images/dilan_office.jpg",
+      "visual_description": "Dim office, monitor glow, a figure sitting at a desk",
+      "reactions": [
+        {
+          "agentId": "agent-katya",
+          "action": "flag",
+          "post_text": "Катя: Нельзя так, нужно удалить.",
+          "trust_delta": -2,
+          "anxiety_delta": 2,
+          "internal_note": "Simulated by archetype паникёр"
+        },
+        {
+          "agentId": "agent-maks",
+          "action": "amplify",
+          "post_text": "Макс: 🔥 Это должно стать вирусным!",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype провокатор"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-dmitry",
+          "action": "doubt",
+          "post_text": "Дмитрий: Не уверен в правдивости, стоит проверить.",
+          "trust_delta": 0,
+          "anxiety_delta": 1,
+          "internal_note": "Simulated by archetype скептик"
+        },
+        {
+          "agentId": "agent-mark",
+          "action": "ignore",
+          "post_text": "Марк: ...",
+          "trust_delta": 0,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype модератор"
+        },
+        {
+          "agentId": "agent-nova",
+          "action": "share",
+          "post_text": "Nova: Поделюсь этим.",
+          "trust_delta": 1,
+          "anxiety_delta": 0,
+          "internal_note": "Simulated by archetype AI-усилитель"
+        }
+      ]
+    }
+  ],
+  "agentStates": {
+    "agent-katya": [
+      {
+        "day": 4,
+        "playerAction": "Our beloved Dylan was spotted late at night in the office...",
+        "agentReaction": "Катя: Нельзя так, нужно удалить."
+      },
+      {
+        "day": 5,
+        "playerAction": "Our beloved Dylan was spotted late at night in the office...",
+        "agentReaction": "Катя: Нельзя так, нужно удалить."
+      },
+      {
+        "day": 5,
+        "playerAction": "Our beloved Dylan was spotted late at night in the office...",
+        "agentReaction": "Катя: Нельзя так, нужно удалить."
+      },
+      {
+        "day": 8,
+        "playerAction": "Our beloved Dylan was spotted late at night in the office...",
+        "agentReaction": "Катя: Нельзя так, нужно удалить."
+      }
+    ],
+    "agent-maks": [
+      {
+        "day": 5,
+        "playerAction": "Our beloved Dylan was spotted late at night in the office...",
+        "agentReaction": "Макс: 🔥 Это должно стать вирусным!"
+      },
+      {
+        "day": 5,
+        "playerAction": "Our beloved Dylan was spotted late at night in the office...",
+        "agentReaction": "Макс: 🔥 Это должно стать вирусным!"
+      },
+      {
+        "day": 8,
+        "playerAction": "Our beloved Dylan was spotted late at night in the office...",
+        "agentReaction": "Макс: 🔥 Это должно стать вирусным!"
+      }
+    ],
+    "agent-mark": [
+      {
+        "day": 5,
+        "playerAction": "Our beloved Dylan was spotted late at night in the office...",
+        "agentReaction": "Марк: ..."
+      },
+      {
+        "day": 8,
+        "playerAction": "Our beloved Dylan was spotted late at night in the office...",
+        "agentReaction": "Марк: ..."
+      },
+      {
+        "day": 8,
+        "playerAction": "Our beloved Dylan was spotted late at night in the office...",
+        "agentReaction": "Марк: ..."
+      }
+    ],
+    "agent-dmitry": [
+      {
+        "day": 5,
+        "playerAction": "Our beloved Dylan was spotted late at night in the office...",
+        "agentReaction": "Дмитрий: Не уверен в правдивости, стоит проверить."
+      },
+      {
+        "day": 5,
+        "playerAction": "Our beloved Dylan was spotted late at night in the office...",
+        "agentReaction": "Дмитрий: Не уверен в правдивости, стоит проверить."
+      },
+      {
+        "day": 8,
+        "playerAction": "Our beloved Dylan was spotted late at night in the office...",
+        "agentReaction": "Дмитрий: Не уверен в правдивости, стоит проверить."
+      }
+    ],
+    "agent-nova": [
+      {
+        "day": 5,
+        "playerAction": "Our beloved Dylan was spotted late at night in the office...",
+        "agentReaction": "Nova: Поделюсь этим."
+      },
+      {
+        "day": 5,
+        "playerAction": "Our beloved Dylan was spotted late at night in the office...",
+        "agentReaction": "Nova: Поделюсь этим."
+      },
+      {
+        "day": 8,
+        "playerAction": "Our beloved Dylan was spotted late at night in the office...",
+        "agentReaction": "Nova: Поделюсь этим."
+      }
+    ]
+  }
+}

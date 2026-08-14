@@ -1,0 +1,42 @@
+[
+  {
+    "id": "agent-katya",
+    "name": "Катя",
+    "archetype": "паникёр",
+    "skepticism_score": 0.2,
+    "anxiety_score": 0.9,
+    "system_prompt_file": "katya.js"
+  },
+  {
+    "id": "agent-maks",
+    "name": "Макс",
+    "archetype": "провокатор",
+    "skepticism_score": 0.1,
+    "anxiety_score": 0.3,
+    "system_prompt_file": "maks.js"
+  },
+  {
+    "id": "agent-dmitry",
+    "name": "Дмитрий",
+    "archetype": "скептик",
+    "skepticism_score": 0.9,
+    "anxiety_score": 0.2,
+    "system_prompt_file": "dmitry.js"
+  },
+  {
+    "id": "agent-mark",
+    "name": "Марк",
+    "archetype": "модератор",
+    "skepticism_score": 0.6,
+    "anxiety_score": 0.4,
+    "system_prompt_file": "mark.js"
+  },
+  {
+    "id": "agent-nova",
+    "name": "Nova",
+    "archetype": "AI-усилитель",
+    "skepticism_score": 0.1,
+    "anxiety_score": 0.1,
+    "system_prompt_file": "nova.js"
+  }
+]

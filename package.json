@@ -1,0 +1,12 @@
+{
+  "name": "infdl-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently \"npm --prefix backend run dev\" \"npm --prefix frontend run dev -- --host 0.0.0.0\"",
+    "install:all": "npm --prefix frontend install && npm --prefix backend install"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}

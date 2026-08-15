@@ -35,10 +35,23 @@
         body: JSON.stringify({ postId })
       });
       const data = await res.json();
+      if(!res.ok) throw new Error(data.error || 'Publish failed');
       console.log('published', data);
-      showOverlay('Published', JSON.stringify(data, null, 2));
-      // insert new post into feed if possible
-      try{ insertPostIntoFeed(data.post || data); }catch(e){ console.warn('Insert feed failed', e); }
+      const summary = [
+        'Post published',
+        'Agents: ' + ((data.reactions && data.reactions.length) || 0),
+        data.cityMetrics ? ('City trust=' + data.cityMetrics.trust + ' anxiety=' + data.cityMetrics.anxiety + ' polar=' + data.cityMetrics.polarization) : '',
+        data.analysis ? ('Fake score: ' + data.analysis.fakeScore) : ''
+      ].filter(Boolean).join('\n');
+      showOverlay('Published', summary + '\n\n' + JSON.stringify({
+        analysis: data.analysis,
+        cityDelta: data.cityDelta,
+        reactions: (data.reactions || []).map(r => ({ agent: r.agentName, action: r.action, text: r.post_text }))
+      }, null, 2));
+      try{
+        insertPostIntoFeed(data.post || data);
+        (data.reactionPosts || []).forEach(rp => insertPostIntoFeed(rp));
+      }catch(e){ console.warn('Insert feed failed', e); }
     }catch(e){
       console.error(e);
       alert('Publish failed: ' + e.message);
@@ -280,9 +293,12 @@
     if(!container) return;
     const screens = Array.from(container.children).filter(n => n.nodeType===1);
     screens.forEach(s => {
-      if(s.classList.contains(className)){
-        // force visible screens to use flex when applicable so CSS layouts render reliably
-        const useFlex = /\b(screen|feed|city|actions|profile|stats)\b/i.test(s.className);
+      const isTarget = s.classList.contains(className);
+      s.classList.toggle('active', isTarget);
+      if(isTarget){
+        // all Codia screen panels are flex columns
+        const useFlex = /(?:^|\s)\S*screen(?:\s|$)/i.test(s.className) ||
+          /\b(feed|city|actions|profile|stats|real-ai|day-progress|post-detail|finale|analysis|firewall)\b/i.test(s.className);
         s.style.display = useFlex ? 'flex' : 'block';
       } else {
         s.style.display = 'none';
@@ -295,28 +311,35 @@
     console.log('Navigated to', className);
   }
 
+  // Direct children of tabs-row whose class token starts with prefix (avoids nested false matches)
+  function selectNavTabs(prefix){
+    const out = [];
+    document.querySelectorAll('[class*="tabs-row"]').forEach(row => {
+      Array.from(row.children).forEach(child => {
+        if(!child.classList) return;
+        const match = Array.from(child.classList).some(c => c === prefix || c.startsWith(prefix + '-'));
+        if(match) out.push(child);
+      });
+    });
+    return out;
+  }
+
   // Wire bottom nav tabs to screens
   function wireTabs(){
-    const tabFeed = document.querySelectorAll('[class*="tab-feed"]');
-    const tabCity = document.querySelectorAll('[class*="tab-city"]');
-    const tabActions = document.querySelectorAll('[class*="tab-actions"]');
-    const tabStats = document.querySelectorAll('[class*="tab-stats"]');
-    const tabProfile = document.querySelectorAll('[class*="tab-profile"]');
     function attach(tabList, handler){
       tabList.forEach(t => {
+        if(t.__tab_wired) return;
+        t.__tab_wired = true;
         try{ t.style.cursor = 'pointer'; t.style.zIndex = 9999; t.style.pointerEvents = 'auto'; }catch(e){}
-        // attach to container
         t.addEventListener('click', (e)=>{ e.preventDefault(); e.stopPropagation(); handler(e); });
-        // also attach to child label if present (some variants put label deeper)
-        const span = t.querySelector('span');
-        if(span) span.addEventListener('click', (e)=>{ e.preventDefault(); e.stopPropagation(); handler(e); });
       });
     }
-    attach(tabFeed, ()=> showScreen('feed-screen'));
-    attach(tabCity, ()=> showScreen('my-city-screen'));
-    attach(tabActions, ()=> showScreen('actions-screen'));
-    attach(tabStats, ()=> { showScreen('stats-screen'); showStats(); });
-    attach(tabProfile, ()=> showScreen('character-profile-screen'));
+    attach(selectNavTabs('tab-feed'), ()=> showScreen('feed-screen'));
+    attach(selectNavTabs('tab-city'), ()=> { showScreen('my-city-screen'); refreshCityFromApi(); });
+    attach(selectNavTabs('tab-actions'), ()=> { showScreen('actions-screen'); refreshCityFromApi(); });
+    attach(selectNavTabs('tab-stats'), ()=> { showScreen('stats-screen'); showStats(); });
+    attach(selectNavTabs('tab-profile'), ()=> showScreen('character-profile-screen'));
+    attach(selectNavTabs('tab-calibration'), ()=> { showScreen('real-ai-screen'); wireDeepfakeCard(); });
   }
 
   // Insert published post into the visible feed (clones first post-card as template)
@@ -338,10 +361,51 @@
       const imgEl = node.querySelector('.post-image, .post-image-117, .post-image');
       if(authorEl) authorEl.textContent = post.author || (post.user && post.user.name) || (post.id || 'Author');
       if(contentEl) contentEl.textContent = post.text || post.content || '';
-      if(timeEl) timeEl.textContent = post.time || 'just now';
+      if(timeEl) timeEl.textContent = post.time || (post.type === 'agent_reaction' ? 'agent reply' : 'just now');
+      // Avatars: only Kate/Max have photos for now; everyone else stays blank
+      const avatarEl = node.querySelector('[class*="avatar"]');
+      if(avatarEl){
+        const who = String(post.author || post.agentName || '').toLowerCase();
+        if(/kate|katya/.test(who)){
+          avatarEl.style.backgroundImage = 'url("/images/avatars/kate.png")';
+          avatarEl.style.backgroundSize = 'cover';
+          avatarEl.style.backgroundPosition = 'center';
+          avatarEl.style.borderRadius = '50%';
+        } else if(/^max\b|max \(/.test(who) || who === 'max'){
+          avatarEl.style.backgroundImage = 'url("/images/avatars/max.png")';
+          avatarEl.style.backgroundSize = 'cover';
+          avatarEl.style.backgroundPosition = 'center';
+          avatarEl.style.borderRadius = '50%';
+        } else {
+          avatarEl.style.backgroundImage = 'none';
+          avatarEl.style.backgroundColor = '#e2e8f0';
+          avatarEl.style.borderRadius = '50%';
+        }
+      }
       if(imgEl){
         if(post.image_url) imgEl.style.backgroundImage = 'url("'+post.image_url+'")';
+        else if(post.type === 'agent_reaction') imgEl.style.display = 'none';
         else imgEl.style.backgroundImage = '';
+      }
+      if(post.type === 'agent_reaction'){
+        node.style.borderLeft = '3px solid #2b59ff';
+        node.style.opacity = '0.95';
+      }
+      // comments under post
+      let commentsBox = node.querySelector('.feed-comments');
+      const comments = post.sample_comments || post.comments || [];
+      if(comments.length){
+        if(!commentsBox){
+          commentsBox = document.createElement('div');
+          commentsBox.className = 'feed-comments';
+          node.appendChild(commentsBox);
+        }
+        commentsBox.innerHTML = comments.map(c => {
+          const text = String(c);
+          const m = text.match(/^([^:]{1,24}):\s*(.*)$/);
+          if(m) return '<div class="feed-comment"><strong>'+escapeHtml(m[1])+':</strong> '+escapeHtml(m[2])+'</div>';
+          return '<div class="feed-comment">'+escapeHtml(text)+'</div>';
+        }).join('');
       }
       // insert at top
       // set dataset id for future dedupe/mapping
@@ -378,26 +442,76 @@
   }
 
   // Wire action cards inside Actions screen to simulate API interaction
+  function updateCityMetricsUI(metrics, actionsRemaining, actionsMax){
+    if(metrics){
+      const trustEl = document.querySelector('.my-city-screen .percentage');
+      const anxEl = document.querySelector('.my-city-screen .percentage-25');
+      const polEl = document.querySelector('.my-city-screen .percentage-2a');
+      if(trustEl) trustEl.textContent = Math.round(metrics.trust) + '%';
+      if(anxEl) anxEl.textContent = Math.round(metrics.anxiety) + '%';
+      if(polEl) polEl.textContent = Math.round(metrics.polarization) + '%';
+      // bar fills (approx width)
+      const fillTrust = document.querySelector('.my-city-screen .bar-fill');
+      const fillAnx = document.querySelector('.my-city-screen .bar-fill-27');
+      const fillPol = document.querySelector('.my-city-screen .bar-fill-2c');
+      if(fillTrust) fillTrust.style.width = Math.round(metrics.trust) + '%';
+      if(fillAnx) fillAnx.style.width = Math.round(metrics.anxiety) + '%';
+      if(fillPol) fillPol.style.width = Math.round(metrics.polarization) + '%';
+    }
+    if(typeof actionsRemaining === 'number'){
+      const rem = document.querySelector('.header-subtitle-8f');
+      const max = typeof actionsMax === 'number' ? actionsMax : 5;
+      if(rem) rem.textContent = 'Remained: ' + actionsRemaining + '/' + max;
+    }
+  }
+
+  async function refreshCityFromApi(){
+    try{
+      const res = await fetch(API_BASE + '/api/city/state');
+      const state = await res.json();
+      updateCityMetricsUI(state.cityMetrics, state.actionsRemaining, state.actionsMax);
+    }catch(e){ console.warn('City refresh failed', e); }
+  }
+
+  // Wire action cards inside Actions screen — real city metric effects
   function wireActionCards(){
     const actionCards = Array.from(document.querySelectorAll('.action-card, .action-card-91, .action-card-9b, .action-card-a3'));
     actionCards.forEach(card => {
       if(card.__action_wired) return; card.__action_wired = true;
       card.style.cursor = 'pointer';
-      card.addEventListener('click', (e)=>{
+      card.addEventListener('click', async (e)=>{
         e.preventDefault();
+        e.stopPropagation();
         const title = card.querySelector('.action-title, .action-title-97, .action-title-9f, .action-title-a8');
         const actionName = title ? title.textContent.trim() : 'Action';
-        const ok = confirm('Perform "'+actionName+'"?');
+        const ok = confirm('Use action "' + actionName + '"?\nThis will change city Trust / Anxiety / Polarization.');
         if(!ok) return;
-        // simple simulated behaviour
-        if(/fact/i.test(actionName)){
-          showOverlay('Fact check', 'Request sent. Result will appear in ~1 day (simulated).');
-        } else if(/calm|question/i.test(actionName)){
-          showOverlay('Calm question', 'Sent an empathetic reply to the conversation.');
-        } else if(/reveal|sticker/i.test(actionName)){
-          showOverlay('Revealing sticker', 'Sticker deployed. Message spread increased.');
-        } else {
-          showOverlay(actionName, 'Action simulated.');
+        try{
+          const res = await fetch(API_BASE + '/api/city/actions', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: actionName })
+          });
+          const data = await res.json();
+          if(!res.ok){
+            showOverlay('Action failed', data.error || JSON.stringify(data));
+            return;
+          }
+          updateCityMetricsUI(data.cityMetrics, data.actionsRemaining, data.actionsMax);
+          const d = data.delta || {};
+          showOverlay(
+            data.label || actionName,
+            (data.effect || '') +
+              '\n\nCity change:\n  Trust ' + (d.trust >= 0 ? '+' : '') + (d.trust || 0) +
+              '\n  Anxiety ' + (d.anxiety >= 0 ? '+' : '') + (d.anxiety || 0) +
+              '\n  Polarization ' + (d.polarization >= 0 ? '+' : '') + (d.polarization || 0) +
+              '\n\nNow: Trust ' + data.cityMetrics.trust + '% · Anxiety ' + data.cityMetrics.anxiety +
+              '% · Polarization ' + data.cityMetrics.polarization + '%' +
+              '\nActions left: ' + data.actionsRemaining + '/' + data.actionsMax
+          );
+        }catch(err){
+          console.error(err);
+          showOverlay('Action error', String(err.message || err));
         }
       });
     });
@@ -437,96 +551,221 @@
     card.appendChild(area);
   }
 
-  // Make arrow/chevron icons navigational (back/home)
+  // Make arrow/chevron icons navigational (back/home) — not action-row chevrons
   function wireArrows(){
-    const arrows = Array.from(document.querySelectorAll('[class*="arrow-left"], [class*="chevron-left"], .chevron-right, .arrow-left-111'));
+    const arrows = Array.from(document.querySelectorAll('[class*="arrow-left"], [class*="chevron-left"], .arrow-left-111'));
     arrows.forEach(a=>{ if(a.__arrow_wired) return; a.__arrow_wired = true; a.style.cursor='pointer'; a.addEventListener('click',(e)=>{ e.preventDefault(); showScreen('feed-screen'); }); });
   }
 
   // Wire the image-analysis (deepfake) card: load a random image and handle buttons
   function wireDeepfakeCard(){
     const card = document.querySelector('.image-analysis-card');
-    if(!card || card.__df_wired) return; card.__df_wired = true;
+    if(!card) return;
     const img = card.querySelector('.ambiguous-image');
     const btnReal = card.querySelector('.btn-real');
     const btnAi = card.querySelector('.btn-ai');
     const btnUnsure = card.querySelector('.btn-unsure');
-    // use placeholder images from picsum
+    const buttons = [btnReal, btnAi, btnUnsure].filter(Boolean);
+
+    function resetButtons(){
+      card.dataset.locked = 'false';
+      buttons.forEach(b => {
+        b.classList.remove('selected', 'correct', 'wrong');
+        b.style.background = '';
+        b.style.color = '';
+      });
+      const old = card.querySelector('.calib-feedback, .dev-calib-feedback');
+      if(old) old.remove();
+    }
+
     function loadImage(){
       const seed = Math.floor(Math.random()*1000);
       if(img) img.style.backgroundImage = 'url(https://picsum.photos/seed/'+seed+'/600/360)';
-      // decide ground truth randomly and store on card
-      const isAi = Math.random() > 0.6;
-      card.dataset.isAi = isAi ? 'true' : 'false';
-      // reset buttons
-      [btnReal, btnAi, btnUnsure].forEach(b => { if(b){ b.style.background=''; b.style.color=''; b.disabled = false; } });
-      // remove feedback area
-      const old = card.querySelector('.dev-calib-feedback'); if(old) old.remove();
+      card.dataset.isAi = Math.random() > 0.6 ? 'true' : 'false';
+      resetButtons();
     }
 
     function showFeedback(correct, groundTruth, explanation){
-      let area = card.querySelector('.dev-calib-feedback');
-      if(!area){ area = document.createElement('div'); area.className = 'dev-calib-feedback'; Object.assign(area.style,{marginTop:'10px',padding:'8px',background:'#fff',border:'1px solid #e6e6e6',borderRadius:'6px'}); card.querySelector('.card-content')?.appendChild(area); }
-      area.innerHTML = '<strong>' + (correct ? 'Correct' : 'Incorrect') + '</strong><div style="margin-top:6px">Ground truth (simulated): <em>'+(groundTruth? 'AI' : 'Real')+'</em></div><div style="margin-top:6px;font-size:13px;color:#333">'+explanation+'</div>';
+      let area = card.querySelector('.calib-feedback');
+      if(!area){
+        area = document.createElement('div');
+        area.className = 'calib-feedback';
+        card.querySelector('.card-content')?.appendChild(area);
+      }
+      area.classList.toggle('correct', !!correct);
+      area.classList.toggle('wrong', !correct);
+      area.innerHTML = '<strong>' + (correct ? 'Correct' : 'Incorrect') + '</strong>' +
+        '<div class="calib-feedback-meta">Ground truth (simulated): <em>'+(groundTruth? 'AI' : 'Real')+'</em></div>' +
+        '<div class="calib-feedback-explain">'+explanation+'</div>';
     }
 
     function onChoice(choice){
+      if(card.dataset.locked === 'true') return;
+      card.dataset.locked = 'true';
       const isAi = card.dataset.isAi === 'true';
-      // highlight selected
-      [btnReal, btnAi, btnUnsure].forEach(b=>{ if(!b) return; b.style.background=''; b.style.color=''; });
+      buttons.forEach(b => b.classList.remove('selected', 'correct', 'wrong'));
       const selectedBtn = choice === 'real' ? btnReal : choice === 'ai' ? btnAi : btnUnsure;
-      if(selectedBtn){ selectedBtn.style.background = '#0a66ff'; selectedBtn.style.color = '#fff'; }
-      // determine correctness
+      if(selectedBtn) selectedBtn.classList.add('selected');
+
       let correct = false;
       if(choice === 'real') correct = !isAi;
       else if(choice === 'ai') correct = isAi;
       else correct = false; // 'not sure' considered incorrect for scoring
-      // placeholder explanation
-      const explanation = correct ? 'Good: look for natural texture, consistent lighting and readable text.' : 'Look for artifacts: distorted text, odd edges, or unnatural lighting — these often indicate AI-generated images.';
+
+      const truthBtn = isAi ? btnAi : btnReal;
+      if(truthBtn) truthBtn.classList.add('correct');
+      if(selectedBtn && !correct) selectedBtn.classList.add('wrong');
+
+      const explanation = correct
+        ? 'Good: look for natural texture, consistent lighting and readable text.'
+        : 'Look for artifacts: distorted text, odd edges, or unnatural lighting — these often indicate AI-generated images.';
       showFeedback(correct, isAi, explanation);
-      // disable buttons until next image
-      [btnReal, btnAi, btnUnsure].forEach(b=>{ if(b) b.disabled = true; });
-      // report to backend (simulated score)
+
       const score = correct ? 100 : (choice === 'unsure' ? 50 : 0);
       fetch('/api/calibration/answer', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ score }) })
-        .then(r=>r.json()).then(j=>{ const area = card.querySelector('.dev-calib-feedback'); if(area) area.innerHTML += '<div style="margin-top:8px;color:#666;font-size:12px">Server: '+(j.label || JSON.stringify(j))+'</div>'; }).catch(()=>{});
+        .then(r=>r.json()).then(j=>{
+          const area = card.querySelector('.calib-feedback');
+          if(area) area.innerHTML += '<div class="calib-feedback-server">Server: '+(j.label || JSON.stringify(j))+'</div>';
+        }).catch(()=>{});
     }
 
-    // initial load
-    loadImage();
+    if(card.__df_wired){
+      // Re-entering Calibration: refresh image/state without double-binding
+      loadImage();
+      return;
+    }
+    card.__df_wired = true;
+
+    buttons.forEach(b => { try{ b.style.cursor = 'pointer'; b.style.pointerEvents = 'auto'; }catch(e){} });
     if(btnReal) btnReal.addEventListener('click', ()=> onChoice('real'));
     if(btnAi) btnAi.addEventListener('click', ()=> onChoice('ai'));
     if(btnUnsure) btnUnsure.addEventListener('click', ()=> onChoice('unsure'));
-    // Next image button
-    const next = document.createElement('button'); next.textContent = 'Next image'; Object.assign(next.style,{marginTop:'8px',padding:'6px 8px',cursor:'pointer'});
-    next.addEventListener('click', ()=> loadImage());
-    card.querySelector('.card-content')?.appendChild(next);
+
+    if(!card.querySelector('.calib-next-btn')){
+      const next = document.createElement('button');
+      next.type = 'button';
+      next.className = 'calib-next-btn';
+      next.textContent = 'Next image';
+      next.addEventListener('click', ()=> loadImage());
+      card.querySelector('.card-content')?.appendChild(next);
+    }
+
+    loadImage();
   }
 
-  // Fetch finale and show in stats screen or overlay
+  // Fetch finale and show formatted 3C2B (not raw JSON)
   async function showFinal(){
     try{
       const res = await fetch('/api/final');
       const data = await res.json();
-      // put content into stats screen area
-      // prefer finale-screen when present (final results page)
       const finale = document.querySelector('.finale-screen');
-      const stats = finale || document.querySelector('.stats-screen');
-      if(stats){
-        let fc = stats.querySelector('.final-content');
-        if(!fc){ fc = document.createElement('div'); fc.className='final-content'; fc.style.padding='12px';
-          // support variants where main-scroll may have numeric suffix
-          const mainScroll = stats.querySelector('[class*="main-scroll"]');
-          if(mainScroll) mainScroll.prepend(fc);
-          else stats.prepend(fc);
-        }
-        fc.innerHTML = '<h3>Results of the game</h3><pre style="white-space:pre-wrap">'+escapeHtml(JSON.stringify(data, null, 2))+'</pre>';
-        // show the appropriate screen
-        if(finale) showScreen('finale-screen'); else showScreen('stats-screen');
-      } else {
-        showOverlay('Results', JSON.stringify(data, null, 2));
+      if(!finale){
+        showOverlay('Results', formatFinalPlain(data));
+        return;
       }
+
+      const without = finale.querySelector('.city-chaos');
+      if(without && data.without_you) without.textContent = data.without_you;
+      const impact = finale.querySelector('.information-shield');
+      if(impact && data.your_impact) impact.textContent = data.your_impact;
+
+      const outcomes = Array.isArray(data.character_outcomes) ? data.character_outcomes : [];
+      const kateTitle = finale.querySelector('.kate-exams');
+      const kateDetail = finale.querySelector('.quick-fact-checking');
+      const maxTitle = finale.querySelector('.max-audience');
+      const maxDetail = finale.querySelector('.toxins-debunked');
+      if(outcomes[0]){
+        if(kateTitle) kateTitle.textContent = outcomes[0].title;
+        if(kateDetail) kateDetail.textContent = outcomes[0].detail;
+      }
+      if(outcomes[1]){
+        if(maxTitle) maxTitle.textContent = outcomes[1].title;
+        if(maxDetail) maxDetail.textContent = outcomes[1].detail;
+      }
+
+      let fc = finale.querySelector('.final-content');
+      if(!fc){
+        fc = document.createElement('div');
+        fc.className = 'final-content';
+        Object.assign(fc.style, {
+          padding: '12px 16px 20px',
+          fontSize: '13px',
+          lineHeight: '1.45',
+          color: '#1e293b'
+        });
+        const mainScroll = finale.querySelector('[class*="main-scroll"]');
+        if(mainScroll) mainScroll.appendChild(fc);
+        else finale.appendChild(fc);
+      }
+      fc.innerHTML = renderFinalHtml(data);
+
+      const btnAnalysis = finale.querySelector('.btn-analysis');
+      if(btnAnalysis && !btnAnalysis.__wired_final){
+        btnAnalysis.__wired_final = true;
+        btnAnalysis.style.cursor = 'pointer';
+        btnAnalysis.addEventListener('click', (e)=>{
+          e.preventDefault();
+          populateAnalysisScreen(data);
+          showScreen('analysis-screen');
+        });
+      }
+
+      showScreen('finale-screen');
     }catch(e){ console.warn('Final load failed', e); }
+  }
+
+  function formatFinalPlain(data){
+    return [
+      data.content,
+      '',
+      'CONTENT: ' + (data.c_content || ''),
+      'CONTEXT: ' + (data.c_context || ''),
+      'CONSEQUENCE: ' + (data.c_consequence || ''),
+      'BUSINESS: ' + (data.b_business || ''),
+      'BEHAVIOR: ' + (data.b_behavior || '')
+    ].join('\n');
+  }
+
+  function renderFinalHtml(data){
+    const m = data.stats && data.stats.cityMetrics ? data.stats.cityMetrics : {};
+    return [
+      '<div style="margin-top:8px;padding:10px;border:1px solid #e2e8f0;border-radius:8px;background:#f8fafc">',
+      '<strong>Score: ' + escapeHtml(String(data.score != null ? data.score : '—')) + '/100</strong>',
+      ' · tone: ' + escapeHtml(data.tone || '—'),
+      '<div style="margin-top:6px">Trust ' + escapeHtml(String(m.trust != null ? m.trust : '—')) +
+        '% · Anxiety ' + escapeHtml(String(m.anxiety != null ? m.anxiety : '—')) +
+        '% · Polarization ' + escapeHtml(String(m.polarization != null ? m.polarization : '—')) + '%</div>',
+      '</div>',
+      section('Content', data.c_content),
+      section('Context', data.c_context),
+      section('Consequence', data.c_consequence),
+      section('Business', data.b_business),
+      section('Behavior', data.b_behavior)
+    ].join('');
+  }
+
+  function section(title, body){
+    if(!body) return '';
+    return '<div style="margin-top:12px"><strong style="color:#2b59ff">' + escapeHtml(title) +
+      '</strong><div style="margin-top:4px">' + escapeHtml(body) + '</div></div>';
+  }
+
+  function populateAnalysisScreen(data){
+    const screen = document.querySelector('.analysis-screen');
+    if(!screen || !data) return;
+    const p = data.pillars || {};
+    const map = [
+      ['.original-source', p.creator],
+      ['.manipulation-techniques', p.content],
+      ['.actual-events', p.context],
+      ['.distorted-facts', p.bias],
+      ['.panic-profit', p.business],
+      ['.ai-content-signs', p.detection]
+    ];
+    map.forEach(([sel, text])=>{
+      const el = screen.querySelector(sel);
+      if(el && text) el.textContent = text;
+    });
   }
 
   // Compute simple stats from /api/feed and populate stats-screen
@@ -540,9 +779,8 @@
       const trust = Math.max(10, 60 - total*2); // placeholder logic
       const anxiety = Math.min(90, 30 + total*3);
       const polarization = Math.min(100, 40 + total*4);
-      // update stats screen DOM
-      const pct = document.querySelector('.percentage-cb'); if(pct) pct.textContent = trust + '%';
-      const trustEl = document.querySelector('.percentage'); if(trustEl) trustEl.textContent = trust + '%';
+      // update stats screen DOM (scoped — avoid overwriting calibration progress %)
+      const trustEl = document.querySelector('.stats-screen .percentage'); if(trustEl) trustEl.textContent = trust + '%';
       const anxEl = document.querySelector('.percentage-25'); if(anxEl) anxEl.textContent = anxiety + '%';
       const polEl = document.querySelector('.percentage-2a'); if(polEl) polEl.textContent = polarization + '%';
       showOverlay('Stats', 'Posts: '+total+'\nTrust: '+trust+'%\nAnxiety: '+anxiety+'%\nPolarization: '+polarization+'%');
@@ -551,32 +789,39 @@
 
   // Force certain UI texts to English for consistency
   function setEnglishText(){
-    // robustly set bottom tab labels by matching parent tab classes
-    document.querySelectorAll('[class*="tab-feed"]').forEach(tab=>{ const s = tab.querySelector('span'); if(s) s.textContent='Feed'; });
-    document.querySelectorAll('[class*="tab-city"]').forEach(tab=>{ const s = tab.querySelector('span'); if(s) s.textContent='City'; });
-    document.querySelectorAll('[class*="tab-actions"]').forEach(tab=>{ const s = tab.querySelector('span'); if(s) s.textContent='Actions'; });
-    document.querySelectorAll('[class*="tab-stats"]').forEach(tab=>{ const s = tab.querySelector('span'); if(s) s.textContent='Stats'; });
-    document.querySelectorAll('[class*="tab-profile"]').forEach(tab=>{ const s = tab.querySelector('span'); if(s) s.textContent='Profile'; });
+    // Only set labels on actual nav tab roots (not feed-screen / feed-container content)
+    function setTabLabel(prefix, label){
+      selectNavTabs(prefix).forEach(tab => {
+        const s = tab.querySelector('span');
+        if(s) s.textContent = label;
+      });
+    }
+    setTabLabel('tab-feed', 'Feed');
+    setTabLabel('tab-city', 'City');
+    setTabLabel('tab-actions', 'Actions');
+    setTabLabel('tab-stats', 'Stats');
+    setTabLabel('tab-profile', 'Profile');
+    setTabLabel('tab-calibration', 'Calibration');
     // header titles
     document.querySelectorAll('.header-title, .header-title-21').forEach(el=>{ if(el) el.textContent = el.textContent.includes('city')? 'My city': el.textContent; });
     // actions list titles
     document.querySelectorAll('.action-title, .action-title-97, .action-title-9f, .action-title-a8').forEach(el=>{ if(el) el.textContent = el.textContent.trim(); });
-    // Calibration / real-ai screen texts
+    // Calibration / real-ai screen texts — update inner spans, never wipe button structure
     const calTitle = document.querySelector('.header-title-c8'); if(calTitle) calTitle.textContent = 'Calibration of confidence';
     const calSubtitle = document.querySelector('.header-subtitle-ca'); if(calSubtitle) calSubtitle.textContent = 'Mission: 3 out of 10';
-    const progLabel = document.querySelector('.progress'); if(progLabel) progLabel.textContent = 'Progress';
-    const progPct = document.querySelector('.percentage-cb'); if(progPct) progPct.textContent = '30%';
-    const question = document.querySelector('.question'); if(question) question.textContent = 'Was this image created by AI?';
-    const btnReal = document.querySelector('.btn-real'); if(btnReal) btnReal.textContent = 'Real';
-    const btnAi = document.querySelector('.btn-ai'); if(btnAi) btnAi.textContent = 'AI';
-    const btnUnsure = document.querySelector('.btn-unsure'); if(btnUnsure) btnUnsure.textContent = 'Not sure';
-    const hint = document.querySelector('.hint-text'); if(hint) hint.textContent = 'Hint: Look at the text on the presentation slide.';
+    const progLabel = document.querySelector('.real-ai-screen .progress'); if(progLabel) progLabel.textContent = 'Progress';
+    const progPct = document.querySelector('.real-ai-screen .percentage-cb'); if(progPct) progPct.textContent = '30%';
+    const question = document.querySelector('.real-ai-screen .question'); if(question) question.textContent = 'Was this image created by AI?';
+    const realSpan = document.querySelector('.btn-real .real') || document.querySelector('.btn-real span');
+    if(realSpan) realSpan.textContent = 'Real';
+    const aiSpan = document.querySelector('.btn-ai .ai') || document.querySelector('.btn-ai span');
+    if(aiSpan) aiSpan.textContent = 'AI';
+    const unsureSpan = document.querySelector('.btn-unsure .not-sure') || document.querySelector('.btn-unsure span');
+    if(unsureSpan) unsureSpan.textContent = 'Not sure';
     // Stats screen header
     document.querySelectorAll('.statistics, .header-title-13d').forEach(el=>{ if(el) el.textContent = 'Statistics'; });
     // Results header placeholder
     document.querySelectorAll('.results-of-the-day').forEach(el=>{ if(el) el.textContent = 'Results of the day'; });
-    // ensure labels in bottom nav are English where possible
-    document.querySelectorAll('[class*="feed"]').forEach(el=>{ if(el && el.textContent.trim()) el.textContent = 'Feed'; });
   }
 
   // Add floating quick-access buttons for Calibration/Stats/Results (always visible)
@@ -601,8 +846,16 @@
     addQuickAccessButtons();
     // hide initial cover elements that may overlay the feed
     document.querySelectorAll('.frame-1, .iphone, .splash-bottom, .no-bg-preview').forEach(n=>{ try{ n.style.display='none'; }catch(e){} });
+    // Wire navigation immediately (do not wait for API / control panel)
+    wireTabs();
+    wireDeepfakeCard();
+    wireArrows();
+    wireActionCards();
+    wirePostCards();
+    wirePostActions();
     showScreen('feed-screen');
     fetchPrepared();
     loadFeed();
+    refreshCityFromApi();
   });
 })();

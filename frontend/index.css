@@ -563,8 +563,7 @@ button {
   flex-shrink: 0;
   position: relative;
   height: 156px;
-  background: url(https://static.codia.ai/image/2026-08-14/Crg0u4TKrV.png)
-    no-repeat center;
+  background: url("/images/posts/dylan_office.jpg") no-repeat center;
   background-size: cover;
   z-index: 41;
   border-radius: 10px;
@@ -9350,4 +9349,238 @@ button {
   background: #1e293b;
   z-index: 745;
   border-radius: 100px;
+}
+
+/* --- Calibration nav + answer button states (appended) --- */
+.tab-calibration,
+.tab-calibration-5a1,
+.tab-calibration-d91 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  gap: 4px;
+  position: relative;
+  width: 64px;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 9999;
+}
+.calibration-icon,
+.calibration-icon-5a2,
+.calibration-icon-d92 {
+  flex-shrink: 0;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #edf2ff;
+  border: 2px solid #2b59ff;
+  box-sizing: border-box;
+}
+.calibration-icon::after,
+.calibration-icon-5a2::after,
+.calibration-icon-d92::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: #2b59ff;
+}
+.tab-label-calib,
+.tab-label-5a3,
+.tab-label-d93 {
+  flex-shrink: 0;
+  color: #64748b;
+  font-family: Inter, var(--default-font-family);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 12px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.bottom-nav,
+.bottom-nav-4f,
+.bottom-nav-ce,
+[class*="bottom-nav"] {
+  pointer-events: auto;
+}
+.tabs-row,
+[class*="tabs-row"] {
+  pointer-events: auto;
+  z-index: 100;
+}
+
+.btn-real,
+.btn-ai,
+.btn-unsure {
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.btn-real.selected,
+.btn-ai.selected,
+.btn-unsure.selected {
+  background: #0a66ff !important;
+  border-color: #0056b3 !important;
+}
+.btn-real.selected .real,
+.btn-real.selected span,
+.btn-ai.selected .ai,
+.btn-ai.selected span,
+.btn-unsure.selected .not-sure,
+.btn-unsure.selected span {
+  color: #ffffff !important;
+}
+.btn-real.correct,
+.btn-ai.correct {
+  background: #4caf50 !important;
+  border-color: #388e3c !important;
+}
+.btn-real.correct .real,
+.btn-real.correct span,
+.btn-ai.correct .ai,
+.btn-ai.correct span {
+  color: #ffffff !important;
+}
+.btn-real.wrong,
+.btn-ai.wrong,
+.btn-unsure.wrong {
+  background: #f44336 !important;
+  border-color: #d32f2f !important;
+}
+.btn-real.wrong .real,
+.btn-real.wrong span,
+.btn-ai.wrong .ai,
+.btn-ai.wrong span,
+.btn-unsure.wrong .not-sure,
+.btn-unsure.wrong span {
+  color: #ffffff !important;
+}
+
+.calib-feedback {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  font-family: Inter, var(--default-font-family);
+  font-size: 13px;
+  line-height: 1.45;
+  color: #333;
+}
+.calib-feedback.correct {
+  background: #e8f5e9;
+  border-color: #4caf50;
+}
+.calib-feedback.wrong {
+  background: #ffebee;
+  border-color: #f44336;
+}
+.calib-feedback-meta {
+  margin-top: 6px;
+}
+.calib-feedback-explain {
+  margin-top: 6px;
+  color: #333;
+}
+.calib-feedback-server {
+  margin-top: 8px;
+  color: #666;
+  font-size: 12px;
+}
+.calib-next-btn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  background: #2b59ff;
+  color: #fff;
+  font-family: Inter, var(--default-font-family);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.calib-next-btn:hover {
+  background: #1e46d4;
+}
+
+/* Max outbreak image in feed */
+.post-image-max {
+  margin-top: 0;
+  align-self: stretch;
+  width: 100%;
+  height: 156px;
+  background: url("/images/posts/outbreak.jpg") no-repeat center !important;
+  background-size: cover !important;
+  border-radius: 10px;
+}
+.post-actions-max {
+  margin-top: 8px;
+}
+.feed-comments {
+  align-self: stretch;
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.feed-comment {
+  font-family: Inter, var(--default-font-family);
+  font-size: 12px;
+  line-height: 1.35;
+  color: #334155;
+}
+.feed-comment strong {
+  color: #1e293b;
+}
+.hint-box[hidden],
+.hint-box {
+  display: none !important;
+}
+
+/* --- Character avatars (Kate/Max only for now) --- */
+.avatar,
+.avatar-2d {
+  background: url("/images/avatars/kate.png") no-repeat center !important;
+  background-size: cover !important;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.avatar-b,
+.avatar-3e {
+  background: url("/images/avatars/max.png") no-repeat center !important;
+  background-size: cover !important;
+  border-radius: 50%;
+  overflow: hidden;
+}
+/* Other feed/city/post avatars stay empty until photos are provided */
+.avatar-2f,
+.avatar-32,
+.avatar-35,
+.avatar-38,
+.avatar-3b,
+.avatar-41,
+.avatar-44,
+.avatar-47,
+.avatar-4a,
+.avatar-4d,
+.avatar-114,
+.avatar-11d,
+.avatar-121 {
+  background: #e2e8f0 !important;
+  background-image: none !important;
+  border-radius: 50%;
+  border: 1px solid #cbd5e1;
 }

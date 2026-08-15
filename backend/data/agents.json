@@ -1,42 +1,141 @@
 [
   {
-    "id": "agent-katya",
-    "name": "Катя",
-    "archetype": "паникёр",
-    "skepticism_score": 0.2,
-    "anxiety_score": 0.9,
-    "system_prompt_file": "katya.js"
-  },
-  {
-    "id": "agent-maks",
-    "name": "Макс",
-    "archetype": "провокатор",
-    "skepticism_score": 0.1,
-    "anxiety_score": 0.3,
-    "system_prompt_file": "maks.js"
-  },
-  {
-    "id": "agent-dmitry",
-    "name": "Дмитрий",
+    "id": "agent-max",
+    "name": "Max",
+    "role": "skeptic",
     "archetype": "скептик",
-    "skepticism_score": 0.9,
-    "anxiety_score": 0.2,
-    "system_prompt_file": "dmitry.js"
+    "influence": 1.1,
+    "traits": { "skepticism": 0.95, "empathy": 0.25, "optimism": 0.15, "curiosity": 0.7, "critical": 0.8, "medical": 0.1, "conspiracy": 0.1 },
+    "templates": {
+      "doubt": ["Source? This reads like a rumor chain.", "I do not trust this yet — show primary evidence.", "Classic unverified claim. Hold the share button."],
+      "question": ["Who verified this, and when?", "Is there an official statement, or only screenshots?"],
+      "flag": ["This looks like misinformation. Do not amplify.", "Red flags everywhere — quarantine this post."],
+      "analyze": ["Cross-check names, dates, and outlets before believing."]
+    }
+  },
+  {
+    "id": "agent-kate",
+    "name": "Kate",
+    "role": "analyst",
+    "archetype": "аналитик",
+    "influence": 1.0,
+    "traits": { "skepticism": 0.75, "empathy": 0.4, "optimism": 0.35, "curiosity": 0.85, "critical": 0.7, "medical": 0.2, "conspiracy": 0.05 },
+    "templates": {
+      "analyze": ["Fact-check notes: claim vs available context.", "Breaking the claim into testable parts…", "Evidence quality looks uneven — separating facts from framing."],
+      "doubt": ["The conclusion is stronger than the evidence provided."],
+      "question": ["Which dataset or authority supports this number?"]
+    }
+  },
+  {
+    "id": "agent-nik",
+    "name": "Nik",
+    "role": "doctor",
+    "archetype": "врач",
+    "influence": 1.15,
+    "traits": { "skepticism": 0.7, "empathy": 0.55, "optimism": 0.4, "curiosity": 0.5, "critical": 0.65, "medical": 0.95, "conspiracy": 0.05 },
+    "templates": {
+      "flag": ["As a clinician: do not panic-act on unverified medical claims.", "This could cause harmful health behavior — pause and verify."],
+      "critique": ["Medical claims need peer-reviewed or official guidance, not vibes."],
+      "doubt": ["I need the clinical source before commenting further."],
+      "analyze": ["Health angle: symptoms, transmission, and policy are being mixed."]
+    }
+  },
+  {
+    "id": "agent-ann",
+    "name": "Ann",
+    "role": "optimist",
+    "archetype": "оптимист",
+    "influence": 0.9,
+    "traits": { "skepticism": 0.25, "empathy": 0.7, "optimism": 0.9, "curiosity": 0.45, "critical": 0.25, "medical": 0.1, "conspiracy": 0.05 },
+    "templates": {
+      "support": ["We can handle this — let's stay constructive.", "Breath. Checking calmly beats panic sharing.", "People are trying their best; focus on helpful next steps."],
+      "question": ["Is there also a hopeful verified update we can pair with this?"]
+    }
+  },
+  {
+    "id": "agent-alex",
+    "name": "Alex",
+    "role": "theorist",
+    "archetype": "теоретик",
+    "influence": 1.0,
+    "traits": { "skepticism": 0.4, "empathy": 0.3, "optimism": 0.35, "curiosity": 0.8, "critical": 0.5, "medical": 0.1, "conspiracy": 0.85 },
+    "templates": {
+      "amplify": ["What if this is part of a larger pattern…", "Connecting dots — the timing is suspicious."],
+      "analyze": ["Hypothesis forming: incentive structures matter here.", "There's a narrative layer under the facts."]
+    }
+  },
+  {
+    "id": "agent-helen",
+    "name": "Helen",
+    "role": "empath",
+    "archetype": "эмпат",
+    "influence": 0.95,
+    "traits": { "skepticism": 0.35, "empathy": 0.95, "optimism": 0.55, "curiosity": 0.4, "critical": 0.3, "medical": 0.15, "conspiracy": 0.05 },
+    "templates": {
+      "support": ["This feels scary — you're not alone in that.", "Let's care for people first, then verify details.", "Anxiety is valid; cruelty in comments is not."],
+      "question": ["How is everyone feeling after reading this?"]
+    }
+  },
+  {
+    "id": "agent-irina",
+    "name": "Irina",
+    "role": "expert",
+    "archetype": "эксперт",
+    "influence": 1.2,
+    "traits": { "skepticism": 0.7, "empathy": 0.35, "optimism": 0.35, "curiosity": 0.6, "critical": 0.75, "medical": 0.35, "conspiracy": 0.05 },
+    "templates": {
+      "critique": ["Professionally: the claim lacks operational definitions.", "I'd reject this in a briefing without citations."],
+      "analyze": ["Expert skim: key variables are missing.", "Framing looks persuasive; substance is thin."]
+    }
+  },
+  {
+    "id": "agent-steven",
+    "name": "Steven",
+    "role": "critic",
+    "archetype": "критик",
+    "influence": 1.0,
+    "traits": { "skepticism": 0.8, "empathy": 0.25, "optimism": 0.2, "curiosity": 0.55, "critical": 0.95, "medical": 0.1, "conspiracy": 0.15 },
+    "templates": {
+      "critique": ["Constructive pushback: logic leap detected.", "Tone is loud; evidence is quiet."],
+      "doubt": ["This would not survive peer review — or even a careful read."],
+      "question": ["What would falsify this claim?"]
+    }
   },
   {
     "id": "agent-mark",
-    "name": "Марк",
-    "archetype": "модератор",
-    "skepticism_score": 0.6,
-    "anxiety_score": 0.4,
-    "system_prompt_file": "mark.js"
+    "name": "Mark",
+    "role": "researcher",
+    "archetype": "исследователь",
+    "influence": 1.05,
+    "traits": { "skepticism": 0.7, "empathy": 0.35, "optimism": 0.3, "curiosity": 0.95, "critical": 0.7, "medical": 0.2, "conspiracy": 0.2 },
+    "templates": {
+      "analyze": ["Digging deeper: comparing claim structure to prior cases.", "Research mode: sampling bias and missing base rates."],
+      "doubt": ["I want longitudinal context before accepting this."]
+    }
+  },
+  {
+    "id": "agent-masha",
+    "name": "Masha",
+    "role": "student",
+    "archetype": "студент",
+    "influence": 0.85,
+    "traits": { "skepticism": 0.45, "empathy": 0.55, "optimism": 0.5, "curiosity": 0.9, "critical": 0.4, "medical": 0.15, "conspiracy": 0.2 },
+    "templates": {
+      "question": ["Wait — how do we know this is current?", "Can someone explain the evidence like I'm learning?", "Is this primary source or a repost?"],
+      "doubt": ["I am confused — the claims conflict with what I read earlier."]
+    }
   },
   {
     "id": "agent-nova",
     "name": "Nova",
-    "archetype": "AI-усилитель",
-    "skepticism_score": 0.1,
-    "anxiety_score": 0.1,
-    "system_prompt_file": "nova.js"
+    "role": "ai",
+    "archetype": "AI",
+    "influence": 1.0,
+    "traits": { "skepticism": 0.6, "empathy": 0.4, "optimism": 0.4, "curiosity": 0.7, "critical": 0.65, "medical": 0.3, "conspiracy": 0.1 },
+    "templates": {
+      "analyze": ["Neutral scan complete: ranking claim risk signals.", "AI summary: emotion high, provenance unclear."],
+      "doubt": ["Confidence low without corroboration."],
+      "flag": ["Risk classifier: elevated misinformation probability."]
+    }
   }
 ]

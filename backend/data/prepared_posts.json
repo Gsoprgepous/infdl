@@ -1,29 +1,47 @@
 [
   {
     "id": "post-1",
-    "text": "Our beloved Dylan was spotted late at night in the office...",
-    "image_url": "/images/dilan_office.jpg",
+    "author": "Kate",
+    "text": "By the way, today in the late afternoon, our mutual favorite, Dylan, was spotted alone in the astrophysics office. What do you say?",
+    "image_url": "/images/posts/dylan_office.jpg",
     "visual_description": "Dim office, monitor glow, a figure sitting at a desk",
     "genre": "gossip_insinuation",
     "provocation_level": 0.6,
-    "intent": "create_drama"
+    "intent": "create_drama",
+    "sample_comments": [
+      "Max: Sounds like gossip. Any photo proof?",
+      "Helen: Maybe he was just working late…",
+      "Masha: Wait, is this even allowed to post?"
+    ]
   },
   {
     "id": "post-2",
-    "text": "LOL, look what someone sent me!",
-    "image_url": "/images/provocative.jpg",
-    "visual_description": "Provocative close-up of a person, suggestive pose",
+    "author": "Max",
+    "text": "URGENT: The authorities are hiding the truth about the scale of the outbreak! Close the windows! 😷⚠️",
+    "image_url": "/images/posts/outbreak.jpg",
+    "visual_description": "Blurred news-style outbreak imagery",
     "genre": "shock_content",
     "provocation_level": 0.95,
-    "intent": "viral_provocation"
+    "intent": "viral_provocation",
+    "sample_comments": [
+      "Kate: Source? This looks like panic bait.",
+      "Nik: Closing windows won’t help a virus — check official guidance.",
+      "Ann: Let’s stay calm until we see a real bulletin.",
+      "Nova: Risk flags: urgency + no source."
+    ]
   },
   {
     "id": "post-3",
+    "author": "player",
     "text": "Official: Vaccination will be mandatory from 2027. Prepare yourselves.",
-    "image_url": null,
-    "visual_description": null,
+    "image_url": "/images/posts/shock.jpg",
+    "visual_description": "Dramatic stock image used without clear source",
     "genre": "conspiracy",
     "provocation_level": 0.8,
-    "intent": "spread_fear"
+    "intent": "spread_fear",
+    "sample_comments": [
+      "Steven: Where is the official document?",
+      "Irina: This wording is classic fear framing."
+    ]
   }
 ]
